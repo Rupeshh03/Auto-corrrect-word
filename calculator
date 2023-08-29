@@ -1,0 +1,112 @@
+from tkinter import *
+def click(event):
+    global scvalue
+    text=event.widget.cget("text")
+    print(text)
+    if text=="=":
+        if scvalue.get().isdigit():
+            value=int(scvalue.get())
+        else:
+            try:
+                value=eval(screen.get())
+                
+            except Exception as e:
+                print(e)
+                value="Error"
+              
+            scvalue.set(value)
+            screen.update()
+    elif text =="C":
+        scvalue.set("")
+        screen.update()
+    else:
+        scvalue.set(scvalue.get()+text)
+        screen.update()
+
+root = Tk()
+root.geometry("444x500")
+root.title("Calculator")
+
+scvalue=StringVar()
+scvalue.set("")
+screen=Entry(root,textvar=scvalue,font="roboto 20")
+screen.pack(fill=X, ipadx=15, ipady=20, padx=10)
+
+f=Frame(root, bg="grey")
+b=Button(f, text="9", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=12,pady=12)
+
+b=Button(f, text="8", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=12,pady=12)
+
+b=Button(f, text="7", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=12,pady=12)
+
+b=Button(f, text="C", padx=30, pady=25, font="helvetica",bg="red" )
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=12,pady=12)
+
+f.pack()
+
+f=Frame(root, bg="grey")
+b=Button(f, text="6", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=12,pady=12)
+
+b=Button(f, text="5", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=12,pady=12)
+
+b=Button(f, text="4", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=12,pady=12)
+
+b=Button(f, text="%", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=12,pady=12)
+
+f.pack()
+
+f=Frame(root, bg="grey")
+b=Button(f, text="3", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=13,pady=12)
+
+b=Button(f, text="2", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=13,pady=12)
+
+b=Button(f, text="1", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=13,pady=12)
+
+b=Button(f, text="+", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=12,pady=12)
+
+f.pack()
+
+f=Frame(root, bg="grey")
+b=Button(f, text="0", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=14,pady=12)
+
+b=Button(f, text=".", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=14,pady=12)
+
+b=Button(f, text="-", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=14,pady=12)
+
+b=Button(f, text="=", padx=30, pady=25, font="helvetica")
+b.bind("<Button-1>",click)
+b.pack(side=LEFT,padx=14,pady=12)
+
+f.pack()
+
+
+root.mainloop()
